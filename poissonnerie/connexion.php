@@ -16,6 +16,15 @@ $users = [
 
 $isLoggedIn = false;
 
+if (isset($_POST['logout'])) {
+    unset($_SESSION['isLoggedIn']);
+    unset($_SESSION['username']);
+}
+
+if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+    $isLoggedIn = true;
+}
+
 
 $salt = "Comment est votre blanquette ?";
 $saltCrypt = md5($salt);
@@ -51,7 +60,6 @@ if (
 
 
         if ($usernameEntre == $user['username']) {
-
             $userExist = true;
             $motDePasseEnregistre = $user['password'];
         };
@@ -62,6 +70,8 @@ if (
 
         if ($motDePasseEnregistre == md5($motDePasseEntre . $saltCrypt)) {
             $isLoggedIn = true;
+            $_SESSION["isLoggedIn"] = true;
+            $_SESSION['username'] = $_POST['username'];
         } else {
 
             $messageErreur = $mdpErrone;

@@ -4,8 +4,8 @@ if (!isset($_SESSION['isLoggedIn'])) {
 };
 require_once "connexion.php";
 
-$_SESSION["isLoggedIn"] = true;
-$_SESSION["isLoggedIn"] ? $isLoggedIn = true : $isLoggedIn = false;
+// $_SESSION["isLoggedIn"] = true;
+// $_SESSION["isLoggedIn"] ? $isLoggedIn = true : $isLoggedIn = false;
 
 require_once "affichage.php";
 ?>
@@ -26,7 +26,7 @@ require_once "affichage.php";
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/HB/poissonnerie">Navbar</a>
+            <a class="navbar-brand" href="/HB/PHPIntro/poissonnerie">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,7 +34,7 @@ require_once "affichage.php";
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/HB/poissonnerie">Home
+                        <a class="nav-link active" href="/HB/PHPIntro/poissonnerie">Home
                             <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
@@ -50,8 +50,11 @@ require_once "affichage.php";
                                 <input type='text' name='password' placeholder='password'>
                             </div>
                             <button>GO !</button>
-                            <?= $messageErreur ?>
+                            <?= "<span style='color:white'>$messageErreur</span>" ?>
                         </form>
+
+                        <span style='color:white'>Bonjour <?php echo $_SESSION['username'] ?></span>
+                        <form method="post"><button type="submit" name="logout">Déconnexion</button></form>
                     </li>
                 </ul>
             </div>
@@ -61,7 +64,7 @@ require_once "affichage.php";
 
     <div class="">
 
-        <button type="submit" class="btn btn-dark"><a href="/HB/poissonnerie">Tous les poissons</a></button>
+        <button type="submit" class="btn btn-dark"><a href="/HB/PHPIntro/poissonnerie">Tous les poissons</a></button>
         <form><button type="submit" class="btn btn-primary" name="type" value="mer">Eau de Mer</button></form>
         <form><button type="submit" class="btn btn-info" name="type" value="douce">Eau Douce</button></form>
     </div>
