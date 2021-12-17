@@ -1,5 +1,14 @@
-<?php require_once "connexion.php" ?>
-<?php require_once "affichage.php" ?>
+<?php
+if (!isset($_SESSION['isLoggedIn'])) {
+    session_start();
+};
+require_once "connexion.php";
+
+$_SESSION["isLoggedIn"] = true;
+$_SESSION["isLoggedIn"] ? $isLoggedIn = true : $isLoggedIn = false;
+
+require_once "affichage.php";
+?>
 
 
 <!DOCTYPE html>
